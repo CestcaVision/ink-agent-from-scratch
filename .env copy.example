@@ -1,0 +1,5 @@
+ANTHROPIC_API_KEY=
+ANTHROPIC_MODEL=
+# 使用官方服务时不需要设置 BASE_URL。
+# 只有使用 Anthropic 协议兼容服务时，才按服务文档填写 API 基础地址。
+# ANTHROPIC_BASE_URL=
