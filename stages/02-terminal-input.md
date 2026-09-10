@@ -34,6 +34,7 @@ console.log(message)
 | 文件 | 本阶段改动 |
 |---|---|
 | `src/main.ts` | 改为终端输入循环，处理空行和退出 |
+| `tsconfig.json` | 明确 Node.js 模块解析和类型检查配置 |
 | `stages/02-terminal-input.md` | 完成后填写验收和执行记录 |
 
 所有命令都在 `ink-agent-from-scratch/` 根目录执行。
@@ -53,6 +54,29 @@ git commit -m "plan: step02 terminal input"
 ```
 
 接下来开始手写代码。
+
+## 准备：配置 TypeScript 项目
+
+在项目根目录（与 package.json 同级）新建 `tsconfig.json`：
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"]
+}
+```
+
+`NodeNext` 使用 Node.js 的模块规则，`types` 显式加载已安装的 Node 类型定义；`target` 支持本阶段的顶层异步循环。`strict` 开启严格检查，`noEmit` 表示只检查、不生成 JavaScript 文件，`skipLibCheck` 跳过依赖声明文件的内部检查。
+
+源码写好后，使用 `pnpm exec tsc` 检查类型，使用 `pnpm run dev` 运行程序。没有 tsconfig 时，编辑器可能把文件当成隐式项目，使用不同的检查设置。
 
 ## 第一步：接收一行输入
 
@@ -166,6 +190,7 @@ try {
 在 macOS 的交互式终端中，还可以在空输入行按 Ctrl+D，观察输入流结束后的收尾。Ctrl+C 可用于中断程序；本阶段以 `/exit` 作为主要退出验收路径，后续接入模型时再设计取消请求的行为。
 
 - [ ] 普通输入和连续两轮输入通过。
+- [ ] `pnpm exec tsc` 没有类型错误。
 - [ ] 空行和全空格输入通过。
 - [ ] 首尾空白清理符合预期。
 - [ ] `/exit` 正常退出，能够重新启动。
@@ -184,6 +209,8 @@ try {
 
 **报错提到模块或顶层 await。** 先确认保存的是 `src/main.ts`，通过 `pnpm run dev` 运行，且 package.json 中保留了 `"type": "module"`。仍有报错时，把命令和错误发来一起排查。
 
+**VS Code 将 `node:readline` 标红。** 确认创建了上文的 tsconfig.json，并且已安装 @types/node。若命令行 `pnpm exec tsc` 通过而编辑器仍标红，在命令面板执行 `TypeScript: Restart TS Server`；若仍未恢复，提供悬停在红线上的完整诊断，继续核对编辑器使用的 TypeScript 版本与项目归属。
+
 ## 执行记录
 
 由你执行后填写，记录真实结果：
@@ -201,7 +228,7 @@ try {
 
 ```bash
 git status --short
-git add src/main.ts stages/02-terminal-input.md
+git add src/main.ts tsconfig.json stages/02-terminal-input.md
 git diff --cached
 ```
 
