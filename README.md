@@ -26,7 +26,7 @@
 | 01 | 运行第一个 TypeScript 程序 | [阶段记录](stages/01-typescript.md)，已完成 |
 | 02 | 终端输入与输入循环 | [阶段记录](stages/02-terminal-input.md)，连续回显已提交；退出与空行处理并入 03 |
 | 03 | AI SDK 单次调用与流式输出 | [阶段记录](stages/03-model-streaming.md)，已完成，使用 DeepSeek |
-| 04 | 对话历史与 system prompt | [开始本阶段](stages/04-history-system.md)，待执行 |
+| 04 | 对话历史与 system prompt | [阶段记录](stages/04-history-system.md)，已完成 |
 | 05 | React / Ink 交互界面 | 待进入时编写 |
 | 06 | 第一个工具与多步执行循环 | 待进入时编写 |
 | 07 | Skills 按需加载 | 待进入时编写 |
