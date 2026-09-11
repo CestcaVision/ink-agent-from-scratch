@@ -2,7 +2,7 @@
 
 技术栈：TypeScript → Vercel AI SDK → React / Ink。使用 Corepack 管理 pnpm 版本。
 
-这是你亲手实现的练习项目，完整参考项目位于 `../ink-agent-course/`。当前阶段：**04，对话历史与系统提示**。模型服务使用你已接通的 DeepSeek，沿用当前 Anthropic 兼容协议 provider。
+这是你亲手实现的练习项目，完整参考项目位于 `../ink-agent-course/`。当前阶段：**05，轻量 Ink TUI 体验**。本阶段独立制作终端留言板，暂缓 Agent 功能演进。前四阶段的 DeepSeek 接入与对话代码保留。
 
 ## 每个阶段的工作方式
 
@@ -14,7 +14,7 @@
 4. 你完成验收，在阶段说明末尾填写实际执行记录。
 5. 你再次提交，保存实现和验证结果，然后进入下一阶段。
 
-每个阶段有两次提交：`docs: add stage NN guide` 与 `feat: complete stage NN ...`。助手默认负责说明和检查，代码由你动手实现，Git 提交由你执行。
+每个阶段有两次提交：`plan: stepNN 主题` 与 `finished: stepNN 主题`。助手默认负责说明和检查，代码由你动手实现，Git 提交由你执行。
 
 后续阶段说明在进入该阶段时逐份编写，基于你实际提交的代码继续，不提前跳过实现过程。
 
@@ -27,7 +27,7 @@
 | 02 | 终端输入与输入循环 | [阶段记录](stages/02-terminal-input.md)，连续回显已提交；退出与空行处理并入 03 |
 | 03 | AI SDK 单次调用与流式输出 | [阶段记录](stages/03-model-streaming.md)，已完成，使用 DeepSeek |
 | 04 | 对话历史与 system prompt | [阶段记录](stages/04-history-system.md)，已完成 |
-| 05 | React / Ink 交互界面 | 待进入时编写 |
+| 05 | 轻量 Ink TUI：布局、输入与状态 | [开始本阶段](stages/05-ink-tui.md)，待执行；独立运行，不调用模型 |
 | 06 | 第一个工具与多步执行循环 | 待进入时编写 |
 | 07 | Skills 按需加载 | 待进入时编写 |
 | 08 | 持久记忆与历史压缩 | 待进入时编写 |
@@ -39,4 +39,4 @@
 
 练习阶段按“小步动手”拆分，编号与参考课程的 12 个 step 不完全相同；概念顺序在此目录中保持连续。
 
-所有命令默认在 `ink-agent-from-scratch/` 根目录执行。现在打开 [阶段 04](stages/04-history-system.md)，先提交说明，再开始实现。
+所有命令默认在 `ink-agent-from-scratch/` 根目录执行。现在打开 [阶段 05](stages/05-ink-tui.md)，先提交说明，再开始实现。后续恢复 Agent 演进时，再决定如何把本阶段的界面接到已有对话逻辑。
