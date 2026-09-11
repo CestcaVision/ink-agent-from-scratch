@@ -2,7 +2,7 @@
 
 [返回学习目录](../README.md) · [上一阶段](02-terminal-input.md)
 
-状态：待执行。
+状态：已完成并提交为 `52f58d7`（`finished: step03`）。你已确认使用 DeepSeek API 跑通；已提交代码使用 `createAnthropic` 作为协议适配器。后续保留你已验证的配置。下文保留最初的操作说明，实际服务选择以此记录为准。
 
 ## 目标与起点
 
