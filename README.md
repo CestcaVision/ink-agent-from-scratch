@@ -28,7 +28,7 @@
 | 03 | AI SDK 单次调用与流式输出 | [阶段记录](stages/03-model-streaming.md)，已完成，使用 DeepSeek |
 | 04 | 对话历史与 system prompt | [阶段记录](stages/04-history-system.md)，已完成 |
 | 05 | 轻量 Ink TUI：布局、输入与状态 | [阶段记录](stages/05-ink-tui.md)，已完成；独立运行，不调用模型 |
-| 06 | Ink 接入 DeepSeek：流式对话与历史 | [开始本阶段](stages/06-ink-chat.md)，待执行 |
+| 06 | Ink 接入 DeepSeek：流式对话与历史 | [阶段记录](stages/06-ink-chat.md)，已完成 |
 | 07 | 第一个工具与多步执行循环 | 待进入时编写 |
 | 08 | Skills 按需加载 | 待进入时编写 |
 | 09 | 持久记忆与历史压缩 | 待进入时编写 |
@@ -40,4 +40,4 @@
 
 练习阶段按“小步动手”拆分，编号与参考课程的 12 个 step 不完全相同；概念顺序在此目录中保持连续。
 
-所有命令默认在 `ink-agent-from-scratch/` 根目录执行。现在打开 [阶段 06](stages/06-ink-chat.md)，先提交说明，再开始实现。原工具调用阶段及后续阶段顺延。
+所有命令默认在 `ink-agent-from-scratch/` 根目录执行。[阶段 06](stages/06-ink-chat.md) 已完成，可查看教程与执行记录。原工具调用阶段及后续阶段顺延。
