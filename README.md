@@ -2,7 +2,7 @@
 
 技术栈：TypeScript → Vercel AI SDK → React / Ink。使用 Corepack 管理 pnpm 版本。
 
-这是你亲手实现的练习项目，完整参考项目位于 `../ink-agent-course/`。当前阶段：**02，终端输入与输入循环**。
+这是你亲手实现的练习项目，完整参考项目位于 `../ink-agent-course/`。当前阶段：**03，AI SDK 单次调用与流式输出**。
 
 ## 每个阶段的工作方式
 
@@ -24,8 +24,8 @@
 |---|---|---|
 | 00 | Corepack、pnpm 与项目初始化 | [初始化记录](stages/00-setup.md)，已完成 |
 | 01 | 运行第一个 TypeScript 程序 | [阶段记录](stages/01-typescript.md)，已完成 |
-| 02 | 终端输入与输入循环 | [开始本阶段](stages/02-terminal-input.md)，待执行 |
-| 03 | AI SDK 单次调用与流式输出 | 待进入时编写 |
+| 02 | 终端输入与输入循环 | [阶段记录](stages/02-terminal-input.md)，连续回显已提交；退出与空行处理并入 03 |
+| 03 | AI SDK 单次调用与流式输出 | [开始本阶段](stages/03-model-streaming.md)，待执行 |
 | 04 | 对话历史与 system prompt | 待进入时编写 |
 | 05 | React / Ink 交互界面 | 待进入时编写 |
 | 06 | 第一个工具与多步执行循环 | 待进入时编写 |
@@ -39,4 +39,4 @@
 
 练习阶段按“小步动手”拆分，编号与参考课程的 12 个 step 不完全相同；概念顺序在此目录中保持连续。
 
-所有命令默认在 `ink-agent-from-scratch/` 根目录执行。现在打开 [阶段 02](stages/02-terminal-input.md)，先提交说明，再开始实现。
+所有命令默认在 `ink-agent-from-scratch/` 根目录执行。现在打开 [阶段 03](stages/03-model-streaming.md)，先提交说明，再开始实现。
