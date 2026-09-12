@@ -10,6 +10,7 @@ export function App() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [history, setHistory] = useState<ModelMessage[]>([]);
+  const [toolEvents, setToolEvents] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState("输入一句话，开始对话。");
   const activeRequest = useRef<AbortController | null>(null);
@@ -51,6 +52,7 @@ export function App() {
       return;
     }
     if (message === "/clear") {
+      setToolEvents([]);
       setHistory([]);
       setQuestion("");
       setAnswer("");
@@ -61,6 +63,7 @@ export function App() {
     const controller = new AbortController();
     activeRequest.current = controller;
     setBusy(true);
+    setToolEvents([]);
     setQuestion(message);
     setAnswer("");
     setStatus("正在生成…");
@@ -70,6 +73,11 @@ export function App() {
         history,
         input: message,
         signal: controller.signal,
+        onEvent(text) {
+          if (!closing.current && !controller.signal.aborted) {
+            setToolEvents(previous => [...previous, text].slice(-8));
+          }
+        },
         onDelta(text) {
           if (!closing.current && !controller.signal.aborted) {
             setAnswer(previous => previous + text);
@@ -105,6 +113,11 @@ export function App() {
         <Text bold>Agent</Text>
         <Text>{answer || (busy ? "等待模型回应…" : "尚无回答")}</Text>
       </Box>
+      <Box flexDirection="column" borderStyle="round" paddingX={1}>
+        <Text bold>执行过程（最近 8 条）</Text>
+        {toolEvents.length === 0 ? <Text dimColor>暂无事件</Text> :
+          toolEvents.map((line, index) => <Text key={index}>{line}</Text>)}
+      </Box>
       <Text color={busy ? "yellow" : "gray"}>{status}</Text>
       {busy ? (
         <Text dimColor>生成中，按 Esc 取消；Ctrl+C 退出。</Text>
@@ -115,6 +128,7 @@ export function App() {
             onSubmit={value => { void handleSubmit(value); }} />
         </Box>
       )}
+
       <Text dimColor>/history · /clear · /exit · Esc 清空输入或取消请求</Text>
     </Box>
   );
