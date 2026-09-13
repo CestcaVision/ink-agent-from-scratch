@@ -1,7 +1,7 @@
 import { streamText, stepCountIs, type ModelMessage } from "ai";
-import { agentTools } from "./tools.js";
 import { model } from "./model.js";
-import { SYSTEM_PROMPT } from "./system.js";
+import { agentTools, WORKSPACE } from "./tools.js";
+import { SYSTEM_PROMPT, COMPUTER_PROMPT } from "./system.js";
 
 export async function chat(options: {
   history: ModelMessage[];
@@ -16,15 +16,15 @@ export async function chat(options: {
   ];
   const signal = AbortSignal.any([
     options.signal,
-    AbortSignal.timeout(60_000),
+    AbortSignal.timeout(180_000),
   ]);
   const result = streamText({
     model,
     tools: agentTools,
-    stopWhen: stepCountIs(3),
-    system: SYSTEM_PROMPT,
+    stopWhen: stepCountIs(8),
+    system: `${SYSTEM_PROMPT}\n${COMPUTER_PROMPT}\n当前工作目录：${WORKSPACE}`,
     messages,
-    maxOutputTokens: 800,
+    maxOutputTokens: 2_000,
     maxRetries: 0,
     abortSignal: signal,
   });
@@ -56,7 +56,7 @@ export async function chat(options: {
   if (toolFailed) throw new Error("本轮发生工具错误，未保存到历史。");
   const finishReason = await result.finishReason;
   if (finishReason === "tool-calls") {
-    throw new Error("已停止在工具调用阶段（最多 3 次模型生成），本轮未保存。");
+    throw new Error("已停止在工具调用阶段（最多 8 次模型生成），本轮未保存；已执行的文件和命令操作不会撤销。");
   }
   if (finishReason !== "stop") {
     throw new Error(`本轮结束原因是 ${finishReason}，未保存到历史。`);

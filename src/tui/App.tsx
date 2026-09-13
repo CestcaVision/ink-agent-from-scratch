@@ -3,6 +3,7 @@ import { Box, Text, useApp, useInput } from "ink";
 import TextInput from "ink-text-input";
 import type { ModelMessage } from "ai";
 import { chat } from "../chat.js";
+import { WORKSPACE } from "../tools.js";
 
 export function App() {
   const { exit } = useApp();
@@ -75,7 +76,8 @@ export function App() {
         signal: controller.signal,
         onEvent(text) {
           if (!closing.current && !controller.signal.aborted) {
-            setToolEvents(previous => [...previous, text].slice(-8));
+            const visible = text.length > 240 ? `${text.slice(0, 240)}…（显示已截断）` : text;
+            setToolEvents(previous => [...previous, visible].slice(-8));
           }
         },
         onDelta(text) {
@@ -94,7 +96,7 @@ export function App() {
         const detail = controller.signal.aborted
           ? "已取消"
           : error instanceof Error ? error.message : String(error);
-        setStatus(`${detail}（本轮未保存；屏幕上可能保留部分回答）`);
+        setStatus(`${detail}（本轮未保存；已执行的文件和命令操作不会撤销）`);
       }
     } finally {
       activeRequest.current = null;
@@ -115,6 +117,7 @@ export function App() {
       </Box>
       <Box flexDirection="column" borderStyle="round" paddingX={1}>
         <Text bold>执行过程（最近 8 条）</Text>
+        <Text dimColor>工作目录：{WORKSPACE}</Text>
         {toolEvents.length === 0 ? <Text dimColor>暂无事件</Text> :
           toolEvents.map((line, index) => <Text key={index}>{line}</Text>)}
       </Box>
