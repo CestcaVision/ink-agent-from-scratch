@@ -2,7 +2,7 @@
 
 技术栈：TypeScript → Vercel AI SDK → React / Ink。使用 Corepack 管理 pnpm 版本。
 
-这是你亲手实现的练习项目，完整参考项目位于 `../ink-agent-course/`。当前阶段：**08，读写文件与执行命令，已完成**。通过 `readfile`、`writefile` 和 `run_command`，让 Agent 在电脑上读取数据、编写脚本、执行并检查结果。
+这是你亲手实现的练习项目，完整参考项目位于 `../ink-agent-course/`。当前阶段：**09，Skills 按需加载，已完成**。先向模型提供技能目录，再用已有的 `readfile` 按任务读取操作说明，完成支出报告与会议纪要。
 
 ## 每个阶段的工作方式
 
@@ -31,7 +31,7 @@
 | 06 | Ink 接入 DeepSeek：流式对话与历史 | [阶段记录](stages/06-ink-chat.md)，已完成 |
 | 07 | 第一个工具与多步执行循环 | [阶段记录](stages/07-tools-loop.md)，实现已提交 |
 | 08 | 读写文件与执行命令 | [阶段记录](stages/08-computer-tools.md)，已完成 |
-| 09 | Skills 按需加载 | 待进入时编写 |
+| 09 | Skills 按需加载 | [阶段记录](stages/09-skills.md)，已完成 |
 | 10 | 持久记忆与历史压缩 | 待进入时编写 |
 | 11 | 计划与待办 | 待进入时编写 |
 | 12 | 独立上下文子 Agent | 待进入时编写 |
@@ -41,4 +41,4 @@
 
 练习阶段按“小步动手”拆分，编号与参考课程的 12 个 step 不完全相同；概念顺序在此目录中保持连续。
 
-所有命令默认在 `ink-agent-from-scratch/` 根目录执行。[阶段 08](stages/08-computer-tools.md) 已完成；下一阶段为 09：Skills 按需加载，进入时再编写说明。
+所有命令默认在 `ink-agent-from-scratch/` 根目录执行。[阶段 09](stages/09-skills.md) 已完成；下一阶段为 10：持久记忆与历史压缩，进入时再编写说明。

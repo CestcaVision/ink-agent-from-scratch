@@ -372,4 +372,4 @@ git diff --cached
 git commit -m "finished: step08 computer tools"
 ```
 
-下一阶段 step09：Skills 按需加载。先有能够读写和执行的工具，再让 Agent 按需读取任务说明，学习怎样组合这些能力。
+下一阶段 [step09：Skills 按需加载](09-skills.md)。先有能够读写和执行的工具，再让 Agent 按需读取任务说明，学习怎样组合这些能力。

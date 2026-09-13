@@ -2,6 +2,7 @@ import { streamText, stepCountIs, type ModelMessage } from "ai";
 import { model } from "./model.js";
 import { agentTools, WORKSPACE } from "./tools.js";
 import { SYSTEM_PROMPT, COMPUTER_PROMPT } from "./system.js";
+import { buildSkillsPrompt } from "./skills.js";
 
 export async function chat(options: {
   history: ModelMessage[];
@@ -22,7 +23,12 @@ export async function chat(options: {
     model,
     tools: agentTools,
     stopWhen: stepCountIs(8),
-    system: `${SYSTEM_PROMPT}\n${COMPUTER_PROMPT}\n当前工作目录：${WORKSPACE}`,
+    system: [
+      SYSTEM_PROMPT,
+      COMPUTER_PROMPT,
+      `当前工作目录：${WORKSPACE}`,
+      buildSkillsPrompt(),
+    ].join("\n\n"),
     messages,
     maxOutputTokens: 2_000,
     maxRetries: 0,
