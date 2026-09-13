@@ -2,7 +2,7 @@
 
 [返回学习目录](../README.md) · [上一阶段](06-ink-chat.md)
 
-状态：待执行。
+状态：实现已提交（`f77c9c1`，`finished: step07 tools and agent loop`）。实际课堂验收记录仍可在下方补充。
 
 ## 目标：让模型取得它原本不知道的信息
 
@@ -393,6 +393,6 @@ git diff --cached
 git commit -m "finished: step07 tools and agent loop"
 ```
 
-下一阶段再讨论 Skills 如何按需提供任务知识与操作说明。
+下一阶段：[读写文件与执行命令](08-computer-tools.md)，先用三个工具完成真实电脑任务；Skills 按需加载顺延到 step09。
 
 参考：[AI SDK 工具调用与多步执行](https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling)。本教程按项目已安装的 AI SDK 6 随包文档与类型定义编写。
